@@ -1,0 +1,252 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+body{
+    font-family: "JetBrains Mono";
+    min-height: 100vh;
+    background-color: #101c2c;
+}
+
+.heading {
+    top: 1.5%;
+    color: white;
+    font-size: xx-large;
+    text-align: center;
+    position: relative; 
+    background: transparent;
+}
+
+
+.container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bubbles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Covers the entire width */
+    height: 100%; /* Covers the entire height */
+    display: flex;
+    pointer-events: none;
+    z-index: -1;
+    
+}   
+
+.bubbles span{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: #4fc3dc;
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #4fc3dc44,
+    0 0 50px #4fc3dc,
+    0 0 100px #4fc3dc;
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s / var(--i));
+}
+
+.bubbles span:nth-child(even){
+    background: #ff2d75;
+    box-shadow: 0 0 0 10px #ff2d7544,   
+    0 0 50px #ff2d75,
+    0 0 100px #ff2d75; 
+}
+
+@keyframes animate{
+
+    0%{
+        transform: translateY(100vh) scale(0);
+    }
+    100%{
+        transform: translateY(-10vh) scale(1);
+    }
+}
+
+.type{
+    color: white;
+    align-items: center;
+    background: transparent;
+    text-align: center;
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.type input{
+    width: 50%;
+    padding: 10px;
+    background-color: #101c2c;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 7px;
+    color: white;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+.type span{
+    position: absolute;
+    left: 0.4%;
+    padding: 4px;
+    pointer-events: none;
+    font-size: 1.4em;
+    color: rgba(255,255,255,0.25);
+    transition: 0.3s;
+}
+
+.type input:valid ~ span,
+.type input:focus ~ span{
+    color:#4fc3dc;
+    transform: translateX(10px) translateY(-11px);
+    font-size: 1em;
+    padding: 0 10px;
+    background-color: #101c2c;
+}
+
+.type:nth-child(2) input:valid ~ span,
+.type:nth-child(2) input:focus ~ span{
+    background-color: #4fc3dc;
+    color:#101c2c;
+    border-radius: 2px;
+}
+
+.type input:valid,
+.type input:focus{
+    border: 1px solid #4fc3dc;
+}
+
+.search-button {
+    position: absolute;
+    right: 0.05%;
+    top: 50%;
+    transform: translateY(-50%);
+    color:#4fc3dc;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 7px 7px 0; /* Round only the right corners */
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 1.1em;
+    transition: 0.3s;
+}   
+
+.search-button:hover {
+    background-color: #4fc3dc;
+    color: white;
+    transition: 0.3s;
+    size: 2em;
+}
+
+
+/* yaha bata ko tala erase */
+
+.search-container {
+    position: relative;
+    width: 50%;
+}
+
+.search-container input {
+    width: 100%;
+    padding-right: 40px; /* Leave space for the icon */
+    padding-left: 10px;
+    font-size: 1em;
+}
+
+.search-container .search-button i {
+    pointer-events: none; /* Make the icon non-clickable */
+}
+
+/* Add flexbox to center the QR code container */
+#qr-code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%; /* Ensure it takes up the full height of the container */
+    margin-top: 20px;
+}
+
+/* Keep the QR code hidden initially */
+#qr-code {
+    display: none; /* Initially hide the canvas */
+    border: 10px solid white; /* Add a white border around the QR code */
+    margin-top: 20px; /* Space above the QR code */
+}
+
+.fotor {
+    color: white;
+    text-align: center;
+    font-size: 0.75em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: transparent; /* Optional: Adds a background color to the footer */
+    padding: 10px 0; /* Adds padding to the footer */
+    z-index: 10; /* Ensures the footer stays above other elements */
+}
+
+.social-icons {
+    position: fixed;
+    top: 50%;
+    left: 1.5%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+}
+
+.icon-link1 {
+    margin: 0.1px 0;
+    font-size: 1.8em;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.icon-link2 {
+    margin: 0.1px 0;
+    font-size: 1.8em;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.icon-link3 {
+    margin: 0.1px 0;
+    font-size: 1.8em;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+
+
+.icon-link3:hover {
+    color: #4fc3dc; /* Change to desired hover color */
+}
+
+.icon-link2:hover {
+    color:#ff2d75 /* Change to desired hover color */
+}
+
+.icon-link1:hover {
+    color:#e1e1e1f8 /* Change to desired hover color */
+}
+
+.icon-link1,
+.icon-link2,
+.icon-link3 i {
+    transition: transform 0.3s ease;
+}
+
+.icon-link1:hover i,
+.icon-link2:hover i,
+.icon-link3:hover i {
+    transform: scale(1.2); /* Makes the icon slightly bigger on hover */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
